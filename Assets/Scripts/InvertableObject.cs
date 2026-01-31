@@ -8,15 +8,36 @@ public class InvertableObject : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Collider2D collider2d;
     public bool isBlack = true;
+    public bool isFixed = false;
 
+    public Color startColor;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider2d = GetComponent<Collider2D>();
+        startColor = spriteRenderer.color;
+        collider2d = GetComponent<BoxCollider2D>();
         UpdateAppearance();
         EventManager.AddListener(EventType.Invert, Invert);
+        EventManager.AddListener(EventType.Fixed, Fixed);
+        EventManager.AddListener(EventType.CancelFixed,CancelFixed);
     }
-    
+
+    private void CancelFixed()
+    {
+        isFixed = false;
+        spriteRenderer.color = startColor;
+    }
+
+    private void Fixed()
+    {
+        if (isFixed)
+        {
+            collider2d.enabled = true;
+        }
+            
+    }
+
 
     public void Invert()
     {
@@ -26,6 +47,7 @@ public class InvertableObject : MonoBehaviour
 
     void UpdateAppearance()
     {
+        if(isFixed) return;
         if (isBlack)
         {
             spriteRenderer.color = Color.black;
@@ -41,5 +63,7 @@ public class InvertableObject : MonoBehaviour
     private void OnDisable()
     {
         EventManager.RemoveListener(EventType.Invert, Invert);
+        EventManager.RemoveListener(EventType.Fixed, Fixed);
+        EventManager.RemoveListener(EventType.CancelFixed, CancelFixed);
     }
 }

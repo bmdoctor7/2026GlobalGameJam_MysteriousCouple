@@ -7,33 +7,41 @@ using UnityEngine;
 public class WorldManager : SingletonMonoBase<WorldManager>
 {
     private WorldManager(){}
-
-    private void Start()
-    {
-        // 初始化时设置到第一关
-        SetLevel(0);
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public int currentLevel = 0;
+    
+    
+    public int currentLevel = 1;
 
     // 每一关对应一个 limit，在 Inspector 里配置
     public List<int> levelLimits = new List<int>();
 
-    // 当前关卡的 limit（由 SetLevel 自动更新）
+    // 第一关的 limit，默认值为 2
     public int limit = 2;
 
     public ArrayList levels = new ArrayList();
+    
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+        EventManager.AddListener(EventType.NextLevel,LoadNextLevel);
+    }
+
+    private void LoadNextLevel()
+    {
+        SetLevel(currentLevel + 1);
+        currentLevel++;
+    }
+
+   
 
     // 设置当前关卡，并根据关卡更新 limit
     public void SetLevel(int levelIndex)
     {
         // 防止越界
-        currentLevel = Mathf.Clamp(levelIndex, 0, Mathf.Max(levelLimits.Count - 1, 0));
+        //currentLevel = Mathf.Clamp(levelIndex, 0, Mathf.Max(levelLimits.Count - 1, 0));
 
         if (levelLimits.Count > 0)
         {
-            limit = levelLimits[currentLevel];
+            limit = levelLimits[currentLevel+1];
         }
         else
         {
@@ -42,8 +50,13 @@ public class WorldManager : SingletonMonoBase<WorldManager>
         }
 
         // TODO: 在这里加载关卡数据、刷新场景等
-        Debug.Log($"切换到关卡 {currentLevel}，limit = {limit}");
+        SceneMgr.Instance.LoadScene("Scene" + (currentLevel + 1), null);
+        Debug.Log($"切换到关卡 {currentLevel + 1}，limit = {limit}");
     }
 
-    
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener(EventType.NextLevel,LoadNextLevel);
+    }
 }
