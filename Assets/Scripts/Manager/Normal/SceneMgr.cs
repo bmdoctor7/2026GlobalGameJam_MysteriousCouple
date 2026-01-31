@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class SceneMgr : MonoBehaviour
+public class SceneMgr : SingletonBase<SceneMgr>
 {
     private SceneMgr(){}
 

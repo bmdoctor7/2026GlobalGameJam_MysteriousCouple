@@ -1,5 +1,5 @@
 
 public enum EventType
 {
-    Loading,
+    Loading,Invert,NumlimitsTips,
 }
