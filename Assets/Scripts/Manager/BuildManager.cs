@@ -121,6 +121,7 @@ public class BuildManager : SingletonMonoBase<BuildManager>
             Destroy(ghostInstance);
             senery--;
             EventManager.Broadcast(EventType.UpdateSenergyUI);
+            EventManager.Broadcast(EventType.UpdateAllUI);
             
         }
 

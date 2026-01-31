@@ -9,4 +9,5 @@ public enum EventType
     CancelFixed,
     UpdateAllUI,
     EnergyCollect,
+    ResetAllUI,
 }

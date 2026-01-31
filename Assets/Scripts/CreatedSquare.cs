@@ -8,6 +8,7 @@ public class CreatedSquare : MonoBehaviour
     public float lifeTime = 3f;
     public bool isBlack = true;
     public bool isStart = true;
+    public bool isFixed = false;
     private SpriteRenderer sr;
     
     private Coroutine lifeCoroutine;
@@ -17,11 +18,13 @@ public class CreatedSquare : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         isBlack = gameObject.GetComponent<InvertableObject>().isBlack;
+        isFixed = gameObject.GetComponent<InvertableObject>().isFixed;
     }
 
     private void Update()
     {
         isBlack = gameObject.GetComponent<InvertableObject>().isBlack;
+        isFixed = gameObject.GetComponent<InvertableObject>().isFixed;
         if (isBlack && isStart)
         {
             isStart = false;
@@ -69,6 +72,19 @@ public class CreatedSquare : MonoBehaviour
                 if (sr)
                 {
                     Color c = sr.color;
+                    c.a = 1f;
+                    sr.color = c;
+                }
+                yield break;
+            }
+
+            if (isFixed)
+            {
+                isStart = true;
+                // 被固定时立刻变为不透明和灰色，并停止淡出
+                if (sr)
+                {
+                    Color c = Color.grey;
                     c.a = 1f;
                     sr.color = c;
                 }

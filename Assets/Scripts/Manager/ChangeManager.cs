@@ -96,8 +96,10 @@ public class ChangeManager : MonoBehaviour
                 {
                     sr.color = targetColor;
                     BuildManager.Instance.cenergy--;
+                    EventManager.Broadcast(EventType.UpdateAllUI);
                 }
-                hit.collider.GetComponent<InvertableObject>().isFixed = true;
+                if(hit.collider.GetComponent<InvertableObject>())
+                    hit.collider.GetComponent<InvertableObject>().isFixed = true;
                 EventManager.Broadcast(EventType.Fixed);
                 Destroy(ghostInstance);
             }

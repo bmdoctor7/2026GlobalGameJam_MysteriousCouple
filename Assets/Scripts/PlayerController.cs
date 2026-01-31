@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             WorldManager.Instance.limit--;
+            EventManager.Broadcast(EventType.UpdateAllUI);
             EventManager.Broadcast(EventType.Invert);
         }
         
@@ -92,26 +93,13 @@ public class PlayerController : MonoBehaviour
             EventManager.Broadcast(EventType.Invert);
             EventManager.Broadcast(EventType.CancelFixed);
             EventManager.Broadcast(EventType.UpdateSenergyUI);
-            //EventManager.Broadcast(EventType.UpdateAllUI);
+            EventManager.Broadcast(EventType.ResetAllUI);
         }
 
         // 到达终点，加载下一关
         if (collision.gameObject.CompareTag("Finish"))
         {
             EventManager.Broadcast(EventType.NextLevel);
-        }
-
-        // 收集能量
-        if (collision.gameObject.CompareTag("Energy"))
-        {
-            if(collision.gameObject.GetComponent<Energy>().type == 1)
-            {
-                BuildManager.Instance.senery++;
-            }
-            else if(collision.gameObject.GetComponent<Energy>().type == 2)
-            {
-                BuildManager.Instance.cenergy++;
-            }
         }
         
     }
