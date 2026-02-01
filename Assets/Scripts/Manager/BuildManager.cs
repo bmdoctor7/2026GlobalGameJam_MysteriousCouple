@@ -67,15 +67,14 @@ public class BuildManager : SingletonMonoBase<BuildManager>
         
         if (Input.GetKeyDown(KeyCode.E) && senery>0)
         {
-            ghostInstance = Instantiate(ghostPrefab);
+            
 
-            if (!ghostPrefab)
+            if (ghostInstance)
             {
-                Debug.LogError("BuildManager: ghostPrefab 未赋值");
+                Debug.Log("已存在虚影");
                 return;
             }
-            
-            //ghostInstance = Object.Instantiate(ghostPrefab);
+            ghostInstance = Instantiate(ghostPrefab);
             Debug.Log("生成虚影: " + ghostInstance.name);
             
             // 禁用不需要的组件（如碰撞、脚本），避免干扰

@@ -431,11 +431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2630660167878585329, guid: 4dd4cc56c1b86114eb6cde1f7d42dc1b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.510504
+      value: 5.546322
       objectReference: {fileID: 0}
     - target: {fileID: 2630660167878585329, guid: 4dd4cc56c1b86114eb6cde1f7d42dc1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.0127
+      value: -4.0305
       objectReference: {fileID: 0}
     - target: {fileID: 2630660167878585329, guid: 4dd4cc56c1b86114eb6cde1f7d42dc1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0e97b1fb00b3f488f9deaef0311a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  targetColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   ghostPrefab: {fileID: 4460000786238866761, guid: 175fba262cef4224f80ba766f93cd600, type: 3}
   clickableLayer:
     serializedVersion: 2

@@ -91,21 +91,22 @@ public class ChangeManager : MonoBehaviour
             if (targetCol)
             {
                 // 尝试获取 SpriteRenderer 并改颜色
-                SpriteRenderer sr = hit.collider.GetComponent<SpriteRenderer>();
-                if (sr && (sr.color == Color.white || sr.color == Color.black))
+                SpriteRenderer sr = targetCol.GetComponent<SpriteRenderer>();
+                if (sr)
                 {
                     sr.color = targetColor;
                     BuildManager.Instance.cenergy--;
                     EventManager.Broadcast(EventType.UpdateAllUI);
                 }
-                if(hit.collider.GetComponent<InvertableObject>())
-                    hit.collider.GetComponent<InvertableObject>().isFixed = true;
+                InvertableObject inv = targetCol.GetComponent<InvertableObject>();
+                if (inv)
+                    inv.isFixed = true;
                 EventManager.Broadcast(EventType.Fixed);
                 Destroy(ghostInstance);
             }
         }
 
-        // 右键或 再按一次E 取消
+        // 右键取消
         if (Input.GetMouseButtonDown(1))
         {
             Destroy(ghostInstance);
