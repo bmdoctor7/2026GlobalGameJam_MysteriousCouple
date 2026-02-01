@@ -21,6 +21,21 @@ public class CreatedSquare : MonoBehaviour
         isFixed = gameObject.GetComponent<InvertableObject>().isFixed;
     }
 
+    private void Start()
+    {
+        EventManager.AddListener(EventType.ResetAllUI, OnReset);
+    }
+
+    private void OnReset()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener(EventType.ResetAllUI, OnReset);
+    }
+
     private void Update()
     {
         isBlack = gameObject.GetComponent<InvertableObject>().isBlack;
@@ -84,7 +99,7 @@ public class CreatedSquare : MonoBehaviour
                 // 被固定时立刻变为不透明和灰色，并停止淡出
                 if (sr)
                 {
-                    Color c = Color.grey;
+                    Color c = Color.gray;
                     c.a = 1f;
                     sr.color = c;
                 }

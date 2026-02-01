@@ -73,6 +73,8 @@ public class ChangeManager : MonoBehaviour
         // 鼠标左键点击选取一个物体
         if (Input.GetMouseButtonDown(0))
         {
+            //Debug.Log($"[ChangeManager] 点击触发，实例: {GetInstanceID()}，点击前能量: {BuildManager.Instance.cenergy}");
+            
             Vector3 mousePos = Input.mousePosition;
             Vector3 worldPos = mainCam.ScreenToWorldPoint(mousePos);
             Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
@@ -91,21 +93,23 @@ public class ChangeManager : MonoBehaviour
             if (targetCol)
             {
                 // 尝试获取 SpriteRenderer 并改颜色
-                SpriteRenderer sr = hit.collider.GetComponent<SpriteRenderer>();
-                if (sr && (sr.color == Color.white || sr.color == Color.black))
+                SpriteRenderer sr = targetCol.GetComponent<SpriteRenderer>();
+                if (sr)
                 {
                     sr.color = targetColor;
                     BuildManager.Instance.cenergy--;
+                    //Debug.Log($"[ChangeManager] 实例: {GetInstanceID()} 扣完后能量: {BuildManager.Instance.cenergy}");
                     EventManager.Broadcast(EventType.UpdateAllUI);
                 }
-                if(hit.collider.GetComponent<InvertableObject>())
-                    hit.collider.GetComponent<InvertableObject>().isFixed = true;
+                InvertableObject inv = targetCol.GetComponent<InvertableObject>();
+                if (inv)
+                    inv.isFixed = true;
                 EventManager.Broadcast(EventType.Fixed);
                 Destroy(ghostInstance);
             }
         }
 
-        // 右键或 再按一次E 取消
+        // 右键取消
         if (Input.GetMouseButtonDown(1))
         {
             Destroy(ghostInstance);
