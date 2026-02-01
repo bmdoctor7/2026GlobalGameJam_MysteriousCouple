@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
+        EventManager.AddListener(EventType.ResetData, ResetData);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener(EventType.ResetData, ResetData);
     }
 
     void Update()
@@ -88,13 +95,7 @@ public class PlayerController : MonoBehaviour
         // 颜色反转初始，S能力初始，C能力初始，取消灰色固定，重置mask次数
         if (collision.gameObject.CompareTag("Edge"))
         {
-            transform.position = startPosition;
-            WorldManager.Instance.limit = WorldManager.Instance.levelLimits[WorldManager.Instance.currentLevel];
-            
-            EventManager.Broadcast(EventType.Invert);
-            EventManager.Broadcast(EventType.CancelFixed);
-            EventManager.Broadcast(EventType.UpdateSenergyUI);
-            EventManager.Broadcast(EventType.ResetAllUI);
+            ResetData();
         }
 
         // 到达终点，加载下一关
@@ -105,12 +106,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // private void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     // 检测是否离开地面
-    //     if (collision.gameObject.CompareTag("Black"))
-    //     {
-    //         isGrounded = false;
-    //     }
-    // }
+    public void ResetData()
+    {
+        transform.position = startPosition;
+        WorldManager.Instance.limit = WorldManager.Instance.levelLimits[WorldManager.Instance.currentLevel];
+        BuildManager.Instance.senery = BuildManager.Instance.privateSenergy;
+        
+        EventManager.Broadcast(EventType.Invert);
+        EventManager.Broadcast(EventType.CancelFixed);
+        EventManager.Broadcast(EventType.UpdateSenergyUI);
+        EventManager.Broadcast(EventType.ResetAllUI);
+    }
 }

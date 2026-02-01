@@ -59,6 +59,10 @@ public class WorldManager : SingletonMonoBase<WorldManager>
         }
         
         SceneMgr.Instance.LoadScene("Scene" + (currentLevel + 1), null);
+        BuildManager.Instance.senery = 0;
+        BuildManager.Instance.privateSenergy = 0;
+        BuildManager.Instance.cenergy = 0;
+        BuildManager.Instance.privateCenergy = 0;
         Debug.Log($"切换到关卡 {currentLevel + 1}，limit = {limit}");
     }
 

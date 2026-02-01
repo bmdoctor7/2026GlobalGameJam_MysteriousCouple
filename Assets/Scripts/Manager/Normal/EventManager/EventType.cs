@@ -10,4 +10,5 @@ public enum EventType
     UpdateAllUI,
     EnergyCollect,
     ResetAllUI,
+    ResetData,
 }

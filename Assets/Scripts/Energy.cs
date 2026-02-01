@@ -13,11 +13,13 @@ public class Energy : MonoBehaviour
         {
             Destroy(gameObject);
             
-            // 场景2、3拾取能量后要显示UI更新
-            EventManager.Broadcast(EventType.Scene2EnergyCollect);
+           
             
             //后续场景UI通用
             EventManager.Broadcast(EventType.EnergyCollect, type);
+            
+            // 场景2、3拾取能量后要显示UI更新
+            EventManager.Broadcast(EventType.Scene2EnergyCollect);
         }
         
     }
