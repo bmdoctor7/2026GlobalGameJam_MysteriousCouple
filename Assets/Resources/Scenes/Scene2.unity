@@ -236,29 +236,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57015cfcdb5297478fefb1e3b688a6a, type: 3}
---- !u!1 &233717494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6928240293993421026, guid: 35154f0e97d4386439e876fbf2b6f330, type: 3}
-  m_PrefabInstance: {fileID: 98967229}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &233717495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233717494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0e134822b88694fac0f60f7173f962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  soundW: {fileID: 8300000, guid: dc739025327410b46bdd5c0df6cf69ac, type: 3}
-  soundA: {fileID: 0}
-  soundS: {fileID: 0}
-  soundD: {fileID: 0}
-  soundSpace: {fileID: 0}
 --- !u!1 &294716538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,24 +1914,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854985714}
   m_CullTransparentMesh: 1
---- !u!114 &231291155279129630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6928240294091589215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0e134822b88694fac0f60f7173f962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  soundW: {fileID: 8300000, guid: 498fee02eda285c48a8519aeb0db25bf, type: 3}
-  soundA: {fileID: 0}
-  soundS: {fileID: 0}
-  soundD: {fileID: 0}
-  soundSpace: {fileID: 8300000, guid: dc739025327410b46bdd5c0df6cf69ac, type: 3}
 --- !u!1001 &348098608136583274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2173,7 +2132,6 @@ GameObject:
   - component: {fileID: 5050288177624814752}
   - component: {fileID: 5899064024575894170}
   - component: {fileID: 4536430814564696278}
-  - component: {fileID: 231291155279129630}
   m_Layer: 6
   m_Name: ___ Player
   m_TagString: Player

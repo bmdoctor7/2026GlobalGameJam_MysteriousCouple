@@ -30,6 +30,8 @@ public class Scene1_UI : MonoBehaviour
     {
         num.text = WorldManager.Instance.limit.ToString();
         text.alpha = 1f;
+        num.alpha = 1f;
+        text2.alpha = 1f;
         if(text1.color == Color.black)
             text1.color = Color.white;
         else

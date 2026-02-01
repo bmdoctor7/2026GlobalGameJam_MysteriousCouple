@@ -1121,8 +1121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 446.3, y: 400.78}
-  m_SizeDelta: {x: 73.6778, y: 71.3126}
+  m_AnchoredPosition: {x: 0, y: 421.69}
+  m_SizeDelta: {x: 121.0713, y: 113.1303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515538241
 MonoBehaviour:
@@ -1173,8 +1173,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1920,7 +1920,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: /// Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 231291155243610787, guid: 35154f0e97d4386439e876fbf2b6f330, type: 3}
+    - {fileID: 4389087187890091664, guid: 35154f0e97d4386439e876fbf2b6f330, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2039,6 +2041,7 @@ GameObject:
   - component: {fileID: 7843782090828555696}
   - component: {fileID: 6370720126099695772}
   - component: {fileID: 8325527394245649478}
+  - component: {fileID: 8325527394245649479}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -2063,6 +2066,24 @@ MonoBehaviour:
   clickableLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &8325527394245649479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325527394245649477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab0e134822b88694fac0f60f7173f962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  soundW: {fileID: 8300000, guid: dc739025327410b46bdd5c0df6cf69ac, type: 3}
+  soundA: {fileID: 0}
+  soundS: {fileID: 0}
+  soundD: {fileID: 0}
+  soundSpace: {fileID: 8300000, guid: 9d57a68690d18cc4c90f3c927bd3f7dc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
